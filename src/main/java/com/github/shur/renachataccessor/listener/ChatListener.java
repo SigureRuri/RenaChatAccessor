@@ -10,7 +10,7 @@ import org.bukkit.event.player.AsyncPlayerChatEvent;
 
 public class ChatListener implements Listener {
 
-    @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
+    @EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
     public void onChat(final AsyncPlayerChatEvent event) {
         final Player player = event.getPlayer();
         final ChatAccessorManager chatAccessorManager = RenaChatAccessor.getChatAccessorManager();

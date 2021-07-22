@@ -68,4 +68,10 @@ public final class ChatAccessorManager {
         return hasChatAccessor(player.getUniqueId());
     }
 
+    public boolean hasChatAccessor(UUID uuid, String id) {
+        if (!accessors.containsKey(uuid)) return false;
+        final String accessorsId = accessors.get(uuid).id;
+        return accessorsId != null && accessorsId.equals(id);
+    }
+
 }

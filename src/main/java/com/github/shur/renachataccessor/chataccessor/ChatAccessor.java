@@ -30,11 +30,15 @@ public final class ChatAccessor {
     }
 
     public ChatAccessor onResponse(ResponseListener onResponse) {
+        if (onResponse == null) throw new IllegalArgumentException("onResponse must not be null");
+
         this.onResponse = onResponse;
         return this;
     }
 
     public ChatAccessor onCancel(CancelListener onCancel) {
+        if (onCancel == null) throw new IllegalArgumentException("onCancel must not be null");
+
         this.onCancel = onCancel;
         return this;
     }

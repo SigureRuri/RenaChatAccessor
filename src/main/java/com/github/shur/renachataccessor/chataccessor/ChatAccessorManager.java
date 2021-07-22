@@ -13,6 +13,8 @@ public final class ChatAccessorManager {
     private final Map<UUID, ChatAccessor> accessors = new HashMap<>();
 
     public void register(final ChatAccessor chatAccessor) {
+        if (chatAccessor == null) throw new IllegalArgumentException("chatAccessor must not be null");
+
         final Player player = chatAccessor.player;
         final UUID uuid = player.getUniqueId();
 
@@ -31,6 +33,9 @@ public final class ChatAccessorManager {
     }
 
     public void response(final UUID uuid, final String input) {
+        if (uuid == null) throw new IllegalArgumentException("uuid must not be null");
+        if (input == null) throw  new IllegalArgumentException("input must not be null");
+
         if (!accessors.containsKey(uuid)) return;
 
         final ChatAccessor accessor = accessors.get(uuid);
@@ -40,10 +45,15 @@ public final class ChatAccessorManager {
     }
 
     public void response(final Player player, final String input) {
+        if (player == null) throw new IllegalArgumentException("player must not be null");
+        if (input == null) throw  new IllegalArgumentException("input must not be null");
+
         response(player.getUniqueId(), input);
     }
 
     public void cancel(final UUID uuid) {
+        if (uuid == null) throw new IllegalArgumentException("player must not be null");
+
         if (!accessors.containsKey(uuid)) return;
 
         final ChatAccessor accessor = accessors.get(uuid);
@@ -53,6 +63,8 @@ public final class ChatAccessorManager {
     }
 
     public void cancel(final Player player) {
+        if (player == null) throw new IllegalArgumentException("player must not be null");
+
         cancel(player.getUniqueId());
     }
 
@@ -61,14 +73,21 @@ public final class ChatAccessorManager {
     }
 
     public boolean has(UUID uuid) {
+        if (uuid == null) throw new IllegalArgumentException("player must not be null");
+
         return accessors.containsKey(uuid);
     }
 
     public boolean has(Player player) {
+        if (player == null) throw new IllegalArgumentException("player must not be null");
+
         return has(player.getUniqueId());
     }
 
     public boolean has(UUID uuid, String id) {
+        if (uuid == null) throw new IllegalArgumentException("uuid must not be null");
+        if (id == null) throw new IllegalArgumentException("id must not be null");
+
         if (!accessors.containsKey(uuid)) return false;
         final String accessorsId = accessors.get(uuid).id;
         return accessorsId != null && accessorsId.equals(id);

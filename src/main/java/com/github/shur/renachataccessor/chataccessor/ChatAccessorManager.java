@@ -93,4 +93,11 @@ public final class ChatAccessorManager {
         return accessorsId != null && accessorsId.equals(id);
     }
 
+    public boolean has(Player player, String id) {
+        if (player == null) throw new IllegalArgumentException("player must not be null");
+        if (id == null) throw new IllegalArgumentException("id must not be null");
+
+        return has(player.getUniqueId(), id);
+    }
+
 }

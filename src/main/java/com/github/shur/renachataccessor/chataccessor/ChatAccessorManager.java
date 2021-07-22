@@ -60,15 +60,15 @@ public final class ChatAccessorManager {
         accessors.keySet().forEach(this::cancel);
     }
 
-    public boolean hasChatAccessor(UUID uuid) {
+    public boolean has(UUID uuid) {
         return accessors.containsKey(uuid);
     }
 
-    public boolean hasChatAccessor(Player player) {
-        return hasChatAccessor(player.getUniqueId());
+    public boolean has(Player player) {
+        return has(player.getUniqueId());
     }
 
-    public boolean hasChatAccessor(UUID uuid, String id) {
+    public boolean has(UUID uuid, String id) {
         if (!accessors.containsKey(uuid)) return false;
         final String accessorsId = accessors.get(uuid).id;
         return accessorsId != null && accessorsId.equals(id);

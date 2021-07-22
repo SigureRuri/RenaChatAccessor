@@ -14,7 +14,7 @@ public class ChatListener implements Listener {
     public void onChat(final AsyncPlayerChatEvent event) {
         final Player player = event.getPlayer();
         final ChatAccessorManager chatAccessorManager = RenaChatAccessor.getChatAccessorManager();
-        if (!chatAccessorManager.hasChatAccessor(player)) return;
+        if (!chatAccessorManager.has(player)) return;
 
         chatAccessorManager.response(player, event.getMessage());
 
